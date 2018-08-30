@@ -55,7 +55,7 @@ defmodule ExAdmin.Paginate do
 
   def pagination_information(name, total) do
     markup do
-      text Gettext.gettext "Displaying" <> " "
+      text Gettext.gettext(ExAdmin.Gettext, "Displaying" <> " ")
       b (gettext "all %{total}", total: total)
       text " #{name}"
     end

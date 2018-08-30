@@ -127,8 +127,7 @@ defmodule Mix.Tasks.Admin.Install do
 
     Enum.each ~w(fonts css js), &(File.mkdir_p Path.join(base ++ [&1]))
     File.mkdir_p Path.join(~w{priv static images ex_admin datepicker})
-    File.mkdir_p Path.join(~w(lib wilson_web admin))
-
+    File.mkdir_p Path.join(~w(lib #{Mix.Phoenix.otp_app()}_web admin))
     status_msg("creating", "css files")
     ~w(admin_lte2.css admin_lte2.css.map active_admin.css.css active_admin.css.css.map)
     |> Enum.each(&(copy_file base_path, "css", &1))
@@ -193,16 +192,16 @@ defmodule Mix.Tasks.Admin.Install do
   end
 
   def do_dashboard(%Config{dashboard: true} = config) do
-    dest_path = Path.join [File.cwd! | ~w(lib wilson_web admin)]
+    dest_path = Path.join [File.cwd! | ~w(lib #{Mix.Phoenix.otp_app()}_web admin)]
     dest_file_path = Path.join dest_path, "dashboard.ex"
     source = Path.join([config.package_path | ~w(priv templates admin.install dashboard.exs)] )
     |> EEx.eval_file([base: get_module(),
       title_txt: (gettext "Dashboard"),
       welcome_txt: (gettext "Welcome to ExAdmin. This is the default dashboard page."),
-      add_txt: (gettext "To add dashboard sections, checkout 'lib/wilson_web/admin/dashboards.ex'")
+      add_txt: (Gettext.gettext(ExAdmin.Gettext, "To add dashboard sections, checkout 'lib/#{Mix.Phoenix.otp_app()}_web/admin/dashboards.ex'"))
       ])
 
-    file = Path.join(~w(lib wilson_web admin dashboard.ex))
+    file = Path.join(~w(lib #{Mix.Phoenix.otp_app()}_web admin dashboard.ex))
     if File.exists?(file) do
       notice_msg "skipping", "#{file}. It already exists."
     else
@@ -223,9 +222,9 @@ defmodule Mix.Tasks.Admin.Install do
 
       config :ex_admin,
         repo: #{base}.Repo,
-        module: #{base},
+        module: #{base}Web,
         modules: [
-          #{base}.ExAdmin.Dashboard,
+          #{base}Web.ExAdmin.Dashboard,
         ]
     """
   end

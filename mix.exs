@@ -17,7 +17,7 @@ defmodule ExAdmin.Mixfile do
       deps: deps(),
       package: package(),
       test_coverage: [tool: ExCoveralls],
-      preferred_cli_env: ["coveralls": :test, "coveralls.detail": :test, "coveralls.post": :test, "coveralls.html": :test],
+      preferred_cli_env: [coveralls: :test, "coveralls.detail": :test, "coveralls.post": :test, "coveralls.html": :test],
       description: """
       An Elixir Phoenix Auto Administration Package.
       """
@@ -36,10 +36,10 @@ defmodule ExAdmin.Mixfile do
   defp deps do
     [
       {:decimal, "~> 1.0"},
-      {:phoenix, "~> 1.2"},
+      {:phoenix, "~> 1.3"},
       {:phoenix_html, "~> 2.6"},
-      {:ecto, "~> 2.1"},
-      {:phoenix_ecto, "~> 3.2"},
+      {:ecto, "~> 2.2"},
+      {:phoenix_ecto, "~> 3.3"},
       {:postgrex, "~> 0.13", only: :test},
       {:floki, "~> 0.8", only: :test},
       {:cowboy, "~> 1.0"},

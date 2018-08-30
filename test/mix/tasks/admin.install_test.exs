@@ -59,9 +59,9 @@ defmodule Mix.Tasks.ExAdmin.InstallTest do
   end
 
   def assert_dashboard do
-    path = Path.join(~w(web admin dashboard.ex))
+    path = Path.join(~w(lib ex_admin_web admin dashboard.ex))
     assert_file path, fn file ->
-      assert file =~ "defmodule ExAdmin.ExAdmin.Dashboard do"
+      assert file =~ "defmodule ExAdminWeb.ExAdmin.Dashboard do"
       assert file =~ "Welcome to ExAdmin."
     end
   end
@@ -160,7 +160,7 @@ defmodule Mix.Tasks.ExAdmin.InstallTest do
         assert file =~ ""
       end
 
-      refute_file Path.join(~w(web admin dashboard.ex))
+      refute_file Path.join(~w(lib ex_admin_web admin dashboard.ex))
 
       assert_brunch_assets()
     end

@@ -29,7 +29,7 @@ defmodule Mix.Tasks.Admin.Gen.Resource do
 
   defp copy_file(%Config{module: module, package_path: package_path} = config) do
     filename = Macro.underscore(module) <> ".ex"
-    dest_path = Path.join ~w(lib wilson_web admin)
+    dest_path = Path.join ~w(lib #{Mix.Phoenix.otp_app()}_web admin)
     dest_file_path = Path.join dest_path, filename
     source_file = Path.join([package_path | ~w(priv templates admin.gen.resource resource.exs)] )
     source = source_file |> EEx.eval_file(base: get_module(), resource: module)
@@ -46,9 +46,9 @@ defmodule Mix.Tasks.Admin.Gen.Resource do
     IO.puts ""
     IO.puts """
         config :ex_admin, :modules, [
-          #{base}.ExAdmin.Dashboard,
+          #{base}Web.ExAdmin.Dashboard,
           ...
-          #{base}.ExAdmin.#{config.module}
+          #{base}Web.ExAdmin.#{config.module}
         ]
 
     """
