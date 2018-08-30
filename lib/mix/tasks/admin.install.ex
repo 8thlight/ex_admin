@@ -222,9 +222,9 @@ defmodule Mix.Tasks.Admin.Install do
 
       config :ex_admin,
         repo: #{base}.Repo,
-        module: #{base},
+        module: #{base}Web,
         modules: [
-          #{base}.ExAdmin.Dashboard,
+          #{base}Web.ExAdmin.Dashboard,
         ]
     """
   end

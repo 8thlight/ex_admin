@@ -46,9 +46,9 @@ defmodule Mix.Tasks.Admin.Gen.Resource do
     IO.puts ""
     IO.puts """
         config :ex_admin, :modules, [
-          #{base}.ExAdmin.Dashboard,
+          #{base}Web.ExAdmin.Dashboard,
           ...
-          #{base}.ExAdmin.#{config.module}
+          #{base}Web.ExAdmin.#{config.module}
         ]
 
     """

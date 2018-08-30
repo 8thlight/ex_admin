@@ -1,4 +1,4 @@
-defmodule <%= base %>.ExAdmin.Dashboard do
+defmodule <%= base %>Web.ExAdmin.Dashboard do
   use ExAdmin.Register
 
   register_page "Dashboard" do

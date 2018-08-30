@@ -59,9 +59,9 @@ config/config.exs
 ```elixir
 config :ex_admin,
   repo: MyProject.Repo,
-  module: MyProject,    # MyProject.Web for phoenix >= 1.3.0-rc 
+  module: MyProjectWeb,
   modules: [
-    MyProject.ExAdmin.Dashboard,
+    MyProjectWeb.ExAdmin.Dashboard,
   ]
 
 ```
@@ -133,10 +133,10 @@ config/config.exs
 ```elixir
 config :ex_admin,
   repo: MyProject.Repo,
-  module: MyProject,
+  module: MyProjectWeb,
   modules: [
-    MyProject.ExAdmin.Dashboard,
-    MyProject.ExAdmin.MyModel,
+    MyProjectWeb.ExAdmin.Dashboard,
+    MyProjectWeb.ExAdmin.MyModel,
   ]
 ```
 
