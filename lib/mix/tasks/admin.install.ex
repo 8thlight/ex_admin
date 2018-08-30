@@ -198,7 +198,7 @@ defmodule Mix.Tasks.Admin.Install do
     |> EEx.eval_file([base: get_module(),
       title_txt: (gettext "Dashboard"),
       welcome_txt: (gettext "Welcome to ExAdmin. This is the default dashboard page."),
-      add_txt: (gettext "To add dashboard sections, checkout 'lib/#{Mix.Phoenix.otp_app()}_web/admin/dashboards.ex'")
+      add_txt: (Gettext.gettext(ExAdmin.Gettext, "To add dashboard sections, checkout 'lib/#{Mix.Phoenix.otp_app()}_web/admin/dashboards.ex'"))
       ])
 
     file = Path.join(~w(lib #{Mix.Phoenix.otp_app()}_web admin dashboard.ex))
