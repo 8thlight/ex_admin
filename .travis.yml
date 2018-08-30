@@ -17,6 +17,3 @@ matrix:
       otp_release: 20.0
 sudo: false
 script: mix test --include integration:true
-notification:
-  recipients:
-    - smpallen99@yahoo.com
